@@ -4,8 +4,9 @@ using UnityEngine;
 
 public enum SlotType { ATTACK, DEFENSE, OTHER};
 
-[CreateAssetMenu(menuName = "Slot")]
-public class Slot : ScriptableObject
+[System.Serializable]
+public class Slot
 {
 	public SlotType type;
+	public int slotStrength;
 }
