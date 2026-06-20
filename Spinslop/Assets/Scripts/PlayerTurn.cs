@@ -16,9 +16,9 @@ public class PlayerTurn : MonoBehaviour
         availableGamblers = new List<Gambler>();
 
         // resetter casino (bare en idé å resette hver turn, kan gjøre full shuffle, men virker interessant)
-        Gambler[] newOrder = new Gambler[titanic.gamblers.Count];
-        titanic.gamblers.CopyTo(newOrder);
-        titanic.casino = newOrder.ToList();
+        Gambler[] newCasino = new Gambler[titanic.gamblers.Count];
+        titanic.gamblers.CopyTo(newCasino);
+        titanic.casino = newCasino.ToList();
 
         // fyller decket
         for (int i = 0; i < deckSize; i++)

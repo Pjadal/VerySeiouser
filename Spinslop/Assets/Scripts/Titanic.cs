@@ -6,11 +6,12 @@ public class Titanic : MonoBehaviour
 {
     [SerializeField] int hull;
     public int deckSize;
-    public List<Gambler> casino;
     public List<Gambler> gamblers;
+    public List<Gambler> casino;
+    
 
     private void Start()
     {
-        gamblers = casino;
+        casino = gamblers;
     }
 }
