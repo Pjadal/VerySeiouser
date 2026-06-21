@@ -35,6 +35,16 @@ public class Titanic : MonoBehaviour
         if (hullDmg > 0)
         {
             hull -= hullDmg;
+            if (hull <= 0)
+            {
+                hull = 0;
+                Crash();
+            }
         }
+    }
+
+    public void Crash()
+    {
+        Debug.Log("Titanic Titanica dessverre");
     }
 }

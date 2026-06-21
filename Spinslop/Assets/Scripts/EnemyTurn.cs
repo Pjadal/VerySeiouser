@@ -35,7 +35,7 @@ public class EnemyTurn : MonoBehaviour
                         break;
                 }
             }
-        } else { Debug.Log("Heeheeheehaw"); }
+        } else { titanic.Damage(10); }
      
         yield return new WaitForSeconds(turnDur/2);
 
