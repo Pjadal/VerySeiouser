@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 176989931}
   - component: {fileID: 176989933}
   - component: {fileID: 176989932}
+  - component: {fileID: 176989934}
   m_Layer: 0
   m_Name: EndTurnButton
   m_TagString: Untagged
@@ -221,6 +222,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &176989934
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176989930}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &190235882
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 806603373}
   - component: {fileID: 806603372}
+  - component: {fileID: 806603374}
   m_Layer: 0
   m_Name: TurnHandler
   m_TagString: Untagged
@@ -463,6 +510,20 @@ Transform:
   - {fileID: 176989931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &806603374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806603371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fda09868b3f90408111d2a281855bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titanic: {fileID: 2133601807}
+  turnDur: 4
 --- !u!1 &974062424
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,9 +756,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hull: 80
+  turnHandler: {fileID: 806603372}
   deckSize: 3
-  casino: []
   gamblers: []
+  casino: []
 --- !u!4 &2133601808
 Transform:
   m_ObjectHideFlags: 0

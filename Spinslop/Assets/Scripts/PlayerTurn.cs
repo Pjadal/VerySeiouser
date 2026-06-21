@@ -12,6 +12,8 @@ public class PlayerTurn : MonoBehaviour
     
     public void StartTurn(int deckSize)
     {
+        Debug.Log("Player turn: ");
+
         // resetter deck
         availableGamblers = new List<Gambler>();
 
@@ -42,6 +44,6 @@ public class PlayerTurn : MonoBehaviour
         extended = false;
 
         // bare inntil enemyturn er laget
-        StartTurn(titanic.deckSize);
+        GetComponent<EnemyTurn>().StartTurn();
     }
 }

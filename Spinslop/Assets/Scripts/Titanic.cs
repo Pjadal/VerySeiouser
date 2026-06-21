@@ -5,6 +5,7 @@ using UnityEngine;
 public class Titanic : MonoBehaviour
 {
     [SerializeField] int hull;
+    [SerializeField] PlayerTurn turnHandler;
     public int deckSize;
     public List<Gambler> gamblers;
     public List<Gambler> casino;
@@ -13,5 +14,6 @@ public class Titanic : MonoBehaviour
     private void Start()
     {
         casino = gamblers;
+        turnHandler.StartTurn(deckSize);
     }
 }
