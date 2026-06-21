@@ -20,9 +20,20 @@ public class EnemyTurn : MonoBehaviour
         Debug.Log("Enemy turn: does " + move);
         if (move != null)
         {
-            foreach (MoveStats actions in move.move)
+            foreach (MoveStats action in move.move)
             {
-
+                switch (action.type[0])
+                {
+                    case MoveType.ATTACK:
+                        titanic.Damage(action.moveStrength[0]);
+                        break;
+                    case MoveType.BUFF:
+                        break;
+                    case MoveType.DEBUFF:
+                        break;
+                    case MoveType.DEFEND:
+                        break;
+                }
             }
         } else { Debug.Log("Heeheeheehaw"); }
      
