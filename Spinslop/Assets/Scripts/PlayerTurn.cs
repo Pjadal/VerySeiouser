@@ -7,24 +7,25 @@ using UnityEngine;
 public class PlayerTurn : MonoBehaviour
 {
     [SerializeField] Titanic titanic;
-    [SerializeField] bool extended;
     [SerializeField] float extensionSpeed;
     [SerializeField] GameObject deck;
+    public bool extended;
     public List<Gambler> availableGamblers = new List<Gambler>();
     private float extension = 4.5f;
 
     private void Update()
     {
-        if (extended && deck.transform.localPosition.x < extension - 7.5f)
+        Transform tf = deck.transform;
+        if (extended && tf.localPosition.x < extension - 7.5f)
         {
-            deck.transform.localPosition = new Vector3(
-                deck.transform.localPosition.x + extensionSpeed * Time.deltaTime, 0
+            tf.localPosition = new Vector3(
+                tf.localPosition.x + extensionSpeed * Time.deltaTime, tf.localPosition.y
                 );
         }
-        else if (!extended && deck.transform.localPosition.x > -7.5f)
+        else if (!extended && tf.localPosition.x > -7.5f)
         {
-            deck.transform.localPosition = new Vector3(
-                deck.transform.localPosition.x - extensionSpeed * Time.deltaTime, 0
+            tf.localPosition = new Vector3(
+                tf.localPosition.x - extensionSpeed * Time.deltaTime, tf.localPosition.y
                 );
         }
     }
