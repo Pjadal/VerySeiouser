@@ -18,7 +18,7 @@ public class Titanic : MonoBehaviour
         turnHandler.StartTurn(deckSize);
     }
 
-    public void Damage(int damage)
+    public bool Damage(int damage)
     {
         int hullDmg = damage;
 
@@ -38,13 +38,16 @@ public class Titanic : MonoBehaviour
             if (hull <= 0)
             {
                 hull = 0;
-                Crash();
+                return Crash();
             }
         }
+
+        return false;
     }
 
-    public void Crash()
+    public bool Crash()
     {
         Debug.Log("Titanic Titanica dessverre");
+        return true;
     }
 }

@@ -8,8 +8,27 @@ public class PlayerTurn : MonoBehaviour
 {
     [SerializeField] Titanic titanic;
     [SerializeField] bool extended;
+    [SerializeField] float extensionSpeed;
+    [SerializeField] GameObject deck;
     public List<Gambler> availableGamblers = new List<Gambler>();
-    
+    private float extension = 4.5f;
+
+    private void Update()
+    {
+        if (extended && deck.transform.localPosition.x < extension - 7.5f)
+        {
+            deck.transform.localPosition = new Vector3(
+                deck.transform.localPosition.x + extensionSpeed * Time.deltaTime, 0
+                );
+        }
+        else if (!extended && deck.transform.localPosition.x > -7.5f)
+        {
+            deck.transform.localPosition = new Vector3(
+                deck.transform.localPosition.x - extensionSpeed * Time.deltaTime, 0
+                );
+        }
+    }
+
     public void StartTurn(int deckSize)
     {
         Debug.Log("Player turn: ");
@@ -28,6 +47,10 @@ public class PlayerTurn : MonoBehaviour
             Draw();
         }
         extended = true;
+        extension = deckSize * 1.5f;
+
+        // fjerner block
+        titanic.block = 0;
     }
 
     public void Draw()

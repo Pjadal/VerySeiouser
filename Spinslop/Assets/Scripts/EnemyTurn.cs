@@ -15,6 +15,7 @@ public class EnemyTurn : MonoBehaviour
 
     public IEnumerator EnemyDo(EnemyMove move = null)
     {
+        bool kill = false;
         yield return new WaitForSeconds(turnDur/2);
         
         Debug.Log("Enemy turn: does " + move);
@@ -35,10 +36,10 @@ public class EnemyTurn : MonoBehaviour
                         break;
                 }
             }
-        } else { titanic.Damage(10); }
+        } else { kill = titanic.Damage(10); }
      
         yield return new WaitForSeconds(turnDur/2);
 
-        GetComponent<PlayerTurn>().StartTurn(titanic.deckSize);
+        if (!kill) GetComponent<PlayerTurn>().StartTurn(titanic.deckSize);
     }
 }
