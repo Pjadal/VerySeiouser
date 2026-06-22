@@ -5,7 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Gambler")]
 public class Gambler : ScriptableObject
 {
-	public new List<Slot>[] startingSlots;
+	public new List<Slot> startingSlots;
+	public new Sprite sprite;
+	public new Slot finalSlot;
 
 	void RandomizeSlots()
 	{
