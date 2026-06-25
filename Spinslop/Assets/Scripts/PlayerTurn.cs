@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Unity.Collections;
 using UnityEngine;
 
@@ -10,13 +11,16 @@ public class PlayerTurn : MonoBehaviour
     [SerializeField] float extensionSpeed;
     [SerializeField] GameObject deck;
     [SerializeField] GameObject gambler;
-    [SerializeField] GameObject killBox;
+    [SerializeField] EndTurnButton endTurn;
     [SerializeField] float initSlotSpeed;
     [SerializeField] float slotSpeedInc;
+    public int turnNr = 0;
     public float slotSpeed;
     public bool extended;
     public List<Gambler> availableGamblers = new List<Gambler>();
     private float extension = 4.5f;
+
+    private List<GameObject> deleteList = new List<GameObject>();
 
     private void Update()
     {
@@ -26,6 +30,10 @@ public class PlayerTurn : MonoBehaviour
             tf.localPosition = new Vector3(
                 tf.localPosition.x + extensionSpeed * Time.deltaTime, tf.localPosition.y
                 );
+            if (tf.localPosition.x >= extension - 7.5f)
+            {
+                endTurn.Activate(turnNr);
+            }
         }
         else if (!extended && tf.localPosition.x > -7.5f)
         {
@@ -37,10 +45,16 @@ public class PlayerTurn : MonoBehaviour
 
     public void StartTurn(int deckSize)
     {
-        Debug.Log("Player turn: ");
+        turnNr++;
+        Debug.Log("Player turn "+ turnNr +": ");
+
+        foreach (GameObject def in deleteList)
+        {
+            Destroy(def);
+        }
+        deleteList = new List<GameObject>();
 
         // resetter deck
-        killBox.SetActive(false);
         slotSpeed = initSlotSpeed;
         availableGamblers = new List<Gambler>();
 
@@ -70,6 +84,8 @@ public class PlayerTurn : MonoBehaviour
             GameObject spawnedGambler = Instantiate(gambler, deck.transform.GetChild(0).GetChild(space));
             spawnedGambler.GetComponent<GamblerHolder>().gambler = availableGamblers[space];
             spawnedGambler.GetComponent<GamblerHolder>().SetSprite();
+            deleteList.Add(spawnedGambler);
+            Debug.Log("gambler spawned");
         }
     }
 
@@ -81,7 +97,7 @@ public class PlayerTurn : MonoBehaviour
     public void EndTurn()
     {
         extended = false;
-        killBox.SetActive(true);
+        endTurn.Deactivate();
 
         // bare inntil enemyturn er laget
         GetComponent<EnemyTurn>().StartTurn();

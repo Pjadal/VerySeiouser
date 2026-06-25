@@ -232,6 +232,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daae80b35b5f9e74ab87fe5fc5d7af03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: {fileID: 806603372}
+  colDeactive: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
+  colActive: {r: 1, g: 1, b: 1, a: 0}
 --- !u!212 &176989933
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -839,9 +842,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titanic: {fileID: 2133601807}
-  extended: 0
   extensionSpeed: 4
   deck: {fileID: 405058698}
+  gambler: {fileID: 5639686952930333044, guid: a99915c910619a44f9b472d8fea57115, type: 3}
+  endTurn: {fileID: 176989932}
+  initSlotSpeed: 1
+  slotSpeedInc: 1
+  turnNr: 1
+  slotSpeed: 0
+  extended: 0
   availableGamblers: []
 --- !u!4 &806603373
 Transform:
@@ -1492,7 +1501,10 @@ MonoBehaviour:
   hull: 80
   turnHandler: {fileID: 806603372}
   deckSize: 3
-  gamblers: []
+  gamblers:
+  - {fileID: 11400000, guid: 3d7f806905c883f44ab4d66d28d87e9f, type: 2}
+  - {fileID: 11400000, guid: 3d7f806905c883f44ab4d66d28d87e9f, type: 2}
+  - {fileID: 11400000, guid: 3d7f806905c883f44ab4d66d28d87e9f, type: 2}
   casino: []
   block: 0
 --- !u!4 &2133601808
